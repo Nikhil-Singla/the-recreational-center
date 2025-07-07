@@ -1,5 +1,5 @@
 # 🏛️ The Rec Center  
-### *Recreating the classics — for mastery, fun, and future-proofing.*
+### *Recreating the classics, for mastery, fun, and future-proofing!*
 
 > **Built with curiosity. Maintained with caffeine. ☕**
 
