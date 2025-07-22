@@ -11,7 +11,7 @@ input_range = 10
 weights_range = 5
 
 # CURRENT NEURON
-inputs = [round(random.uniform(-1, 1) * input_range, 2) for _ in range(n) ]
+inputs = [round(random.uniform(-1, 1) * input_range, 2) for _ in range(n)]
 weights = [round(random.uniform(-1, 1) * weights_range, 2) for _ in range(n)]
 bias = random.randint(0, 10)
 

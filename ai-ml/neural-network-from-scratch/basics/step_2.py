@@ -21,9 +21,8 @@ weights3 = [round(random.uniform(-1, 1) * weights_range, 2) for _ in range(n)]
 bias2 = random.randint(0, 10)
 bias3 = random.randint(0, 10)
 
-# Modelling output
-
-output = [sum([i*w for i, w in zip(inputs, weights)]) + bias,
+# Modelling output layer of size 3
+output = [sum([i*w for i, w in zip(inputs, weights)]) + bias,       # Now we will have more outputs, one for each of the neurons in the neuron layer.
           sum([i*w for i, w in zip(inputs, weights2)]) + bias2,
           sum([i*w for i, w in zip(inputs, weights3)]) + bias3
           ]
