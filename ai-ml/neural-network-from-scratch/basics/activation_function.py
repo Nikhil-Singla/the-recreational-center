@@ -22,6 +22,7 @@ class ActivationFunction:
             "leakyReLU": self.leakyReLU_forward,
             "sigmoid": self.sigmoid_forward,
             "elu": self.elu_forward,
+            "softmax": self.softmax_forward,
         }
 
         # Calling the selected activation function, only if it exists, or raising an error otherwise
@@ -52,15 +53,39 @@ class ActivationFunction:
         # Exponential Linear Unit, Smooth out negative values that approach to -alpha when x = -inf
         self.output = np.where(inputs >= 0, inputs, alpha*(np.exp(inputs) - 1))
         
+    def softmax_forward(self, inputs):
+        # Returns the probabilistic output as exponent of input / total value of inputs' exponent.
+        exp_term = np.exp(inputs)
+        self.output = exp_term/np.sum(exp_term) 
+        # Translates to e^x / sum of all e^x transformations of the input. 
+
     def get_output(self):
         # Gets the output 
         return self.output
-
+    
+fig, ax = plt.subplots(2, 3)
 function_plotting = ActivationFunction()
-x_coor, y_coor = function_plotting.test_function()
+fig.suptitle("Graphs of Activation Functions")
 
-fig, ax = plt.subplots()
-ax.plot(x_coor, y_coor)
+x_coor, y_coor = function_plotting.test_function(activationFunction="ReLU")
+ax[0,0].plot(x_coor, y_coor)
+ax[0,0].set_title("ReLU")
+
+x_coor, y_coor = function_plotting.test_function(activationFunction="tanh")
+ax[0,1].plot(x_coor, y_coor, label="tanh")
+
+x_coor, y_coor = function_plotting.test_function(activationFunction="leakyReLU")
+ax[0,2].plot(x_coor, y_coor, label="leakyReLU")
+
+x_coor, y_coor = function_plotting.test_function(activationFunction="sigmoid")
+ax[1,0].plot(x_coor, y_coor, label="sigmoid")
+
+x_coor, y_coor = function_plotting.test_function(activationFunction="elu")
+ax[1,1].plot(x_coor, y_coor, label="eLU")
+
+x_coor, y_coor = function_plotting.test_function(activationFunction="softmax")
+ax[1,2].plot(x_coor, y_coor, label="softmax")
+
 
 # Draw lines to split quadrants
 plt.show()
