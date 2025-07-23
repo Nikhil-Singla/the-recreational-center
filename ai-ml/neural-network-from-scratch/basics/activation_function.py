@@ -22,7 +22,7 @@ class ActivationFunction:
             "leakyReLU": self.leakyReLU_forward,
             "sigmoid": self.sigmoid_forward,
             "elu": self.elu_forward,
-            "softmax": self.softmax_forward,
+            "softmax": self.softmax_forward
         }
 
         # Calling the selected activation function, only if it exists, or raising an error otherwise
@@ -67,24 +67,29 @@ fig, ax = plt.subplots(2, 3)
 function_plotting = ActivationFunction()
 fig.suptitle("Graphs of Activation Functions")
 
-x_coor, y_coor = function_plotting.test_function(activationFunction="ReLU")
-ax[0,0].plot(x_coor, y_coor)
-ax[0,0].set_title("ReLU")
+list_of_activation_functions = [ "ReLU", "tanh", "leakyReLU", "sigmoid", "elu", "softmax"]
+subplot_coordinates = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2]]
 
-x_coor, y_coor = function_plotting.test_function(activationFunction="tanh")
-ax[0,1].plot(x_coor, y_coor, label="tanh")
+for function, subplots in zip(list_of_activation_functions, subplot_coordinates):
+    x_coor, y_coor = function_plotting.test_function(activationFunction=function)
+    i, j = subplots
+    ax[i, j].plot(x_coor, y_coor)
+    ax[i, j].set_title(function)
 
-x_coor, y_coor = function_plotting.test_function(activationFunction="leakyReLU")
-ax[0,2].plot(x_coor, y_coor, label="leakyReLU")
+# x_coor, y_coor = function_plotting.test_function(activationFunction="tanh")
+# ax[0,1].plot(x_coor, y_coor, label="tanh")
 
-x_coor, y_coor = function_plotting.test_function(activationFunction="sigmoid")
-ax[1,0].plot(x_coor, y_coor, label="sigmoid")
+# x_coor, y_coor = function_plotting.test_function(activationFunction="leakyReLU")
+# ax[0,2].plot(x_coor, y_coor, label="leakyReLU")
 
-x_coor, y_coor = function_plotting.test_function(activationFunction="elu")
-ax[1,1].plot(x_coor, y_coor, label="eLU")
+# x_coor, y_coor = function_plotting.test_function(activationFunction="sigmoid")
+# ax[1,0].plot(x_coor, y_coor, label="sigmoid")
 
-x_coor, y_coor = function_plotting.test_function(activationFunction="softmax")
-ax[1,2].plot(x_coor, y_coor, label="softmax")
+# x_coor, y_coor = function_plotting.test_function(activationFunction="elu")
+# ax[1,1].plot(x_coor, y_coor, label="eLU")
+
+# x_coor, y_coor = function_plotting.test_function(activationFunction="softmax")
+# ax[1,2].plot(x_coor, y_coor, label="softmax")
 
 
 # Draw lines to split quadrants
