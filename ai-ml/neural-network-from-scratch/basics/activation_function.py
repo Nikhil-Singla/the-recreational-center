@@ -43,7 +43,7 @@ class ActivationFunction:
 
     def leakyReLU_forward(self, inputs):
         self.output = np.maximum(np.dot(inputs, 0.1), inputs)
-        # Dot multiplication of the inputs with 0.1 for negative values, or just the straight positive value.
+        # Dot multiplication of the inputs with 0.1 for negative values, or just the straight positive value as we take the maximum.
 
     def sigmoid_forward(self, inputs):
         self.output =  1/(1 + np.exp(-inputs))
@@ -55,6 +55,9 @@ class ActivationFunction:
         
     def softmax_forward(self, inputs):
         # Returns the probabilistic output as exponent of input / total value of inputs' exponent.
+        # Probabilistic means that its behaviour is kind of messed up for the range of elements, as the higher elements have bigger weights.
+        # Should be better demonstrated with custom range of inputs instead. 
+
         exp_term = np.exp(inputs)
         self.output = exp_term/np.sum(exp_term) 
         # Translates to e^x / sum of all e^x transformations of the input. 
@@ -64,33 +67,28 @@ class ActivationFunction:
         return self.output
     
 fig, ax = plt.subplots(2, 3)
+plt.axis([-110, 110, -0.1, 0.15]) # TODO: NEEDS FIXING TO ALL SUBPLOTS, NOT JUST THE LAST ONE.
+
 function_plotting = ActivationFunction()
 fig.suptitle("Graphs of Activation Functions")
 
 list_of_activation_functions = [ "ReLU", "tanh", "leakyReLU", "sigmoid", "elu", "softmax"]
 subplot_coordinates = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2]]
+colors_list = ["red", "blue", "green", "cyan", "magenta", "black"]
 
-for function, subplots in zip(list_of_activation_functions, subplot_coordinates):
-    x_coor, y_coor = function_plotting.test_function(activationFunction=function)
-    i, j = subplots
-    ax[i, j].plot(x_coor, y_coor)
-    ax[i, j].set_title(function)
+for function_name, subplots_location, colors in zip(list_of_activation_functions, subplot_coordinates, colors_list):
+    x_coor, y_coor = function_plotting.test_function(activationFunction=function_name)
+    i, j = subplots_location
+    ax[i, j].plot(x_coor, y_coor, color=colors)
+    ax[i, j].set_title(function_name, color=colors)
+    ax[i, j].set(xlabel='Inputs', ylabel='Outputs')
 
-# x_coor, y_coor = function_plotting.test_function(activationFunction="tanh")
-# ax[0,1].plot(x_coor, y_coor, label="tanh")
+fig.set_size_inches(16,18)
+plt.savefig("ai-ml/neural-network-from-scratch/basics/activation_functions.png") 
 
-# x_coor, y_coor = function_plotting.test_function(activationFunction="leakyReLU")
-# ax[0,2].plot(x_coor, y_coor, label="leakyReLU")
+# TODO:Draw lines to split quadrants
+mng = plt.get_current_fig_manager()
+mng.resize(*mng.window.maxsize())
 
-# x_coor, y_coor = function_plotting.test_function(activationFunction="sigmoid")
-# ax[1,0].plot(x_coor, y_coor, label="sigmoid")
-
-# x_coor, y_coor = function_plotting.test_function(activationFunction="elu")
-# ax[1,1].plot(x_coor, y_coor, label="eLU")
-
-# x_coor, y_coor = function_plotting.test_function(activationFunction="softmax")
-# ax[1,2].plot(x_coor, y_coor, label="softmax")
-
-
-# Draw lines to split quadrants
+fig.tight_layout()
 plt.show()
