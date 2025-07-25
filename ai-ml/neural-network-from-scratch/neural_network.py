@@ -1,10 +1,9 @@
+# Credits: Sentdex on Youtube at https://www.youtube.com/watch?v=Wo5dMEP_BbI&list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3
+# Author: Nikhil Singla
+
 import random
 import numpy as np
-
-# Custom activation function class with a test interface
 from basics.activation_function import ActivationFunction
-
-# Getting spiral dataset of fixed number of points, classes and dimension. Default is 100 points, for each of the 3 classes in 2D space
 from basics.spiral_data import create_data
 
 # Set seed for reproducibility
@@ -31,11 +30,6 @@ OUTPUT_NEURONS = 3          # Single neuron in the output layer
 BATCH_SIZE = 2              # Number of samples in a batch
 ROUNDING_PRECISION = 2      # Decimal places for rounding input values
 
-# Generate synthetic input data with random floats between -1 and 1
-# X = [[round(random.uniform(-1, 1), ROUNDING_PRECISION) for _ in range(INPUT_NEURONS)] for _ in range(BATCH_SIZE)]
-# X = np.array(X)  # Convert to NumPy array for matrix operations
-
-# Generate synthetic input data with random points forming a spiral on the graph.
 X, y = create_data()
 
 # ---------------- Network Flow ----------------
@@ -49,8 +43,6 @@ layer_1.forward(X)
 activation_layer.ReLU_forward(layer_1.output)
 
 # ---------------- Output ----------------
-
-# Although it works for every layer, just looking at a single layer gives a better idea of the working.
 print("Layer 1 Output")
 print(layer_1.output[99])
 print("Applying Activation ReLU")

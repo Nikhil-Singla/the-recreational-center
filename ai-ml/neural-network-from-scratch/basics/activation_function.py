@@ -60,7 +60,9 @@ class ActivationFunction:
         # Probabilistic means that its behaviour is kind of messed up for the range of elements, as the higher elements have bigger weights.
         # Should be better demonstrated with custom range of inputs instead. 
 
-        exp_term = np.exp(inputs)
+        # Using shifted inputs, because in the summation and division, the result is unchanged. Caps the positive exponentiation that may blow up to infinity.
+        exp_term = np.exp(inputs - np.max(inputs))
+
         self.output = exp_term/np.sum(exp_term) 
         # Translates to e^x / sum of all e^x transformations of the input. 
 
