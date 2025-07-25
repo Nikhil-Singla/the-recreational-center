@@ -61,7 +61,7 @@ class ActivationFunction:
         # Should be better demonstrated with custom range of inputs instead. 
 
         # Using shifted inputs, because in the summation and division, the result is unchanged. Caps the positive exponentiation that may blow up to infinity.
-        axis_term = 1 if exp_term.ndim > 1 else 0
+        axis_term = 1 if inputs.ndim > 1 else 0
         exp_term = np.exp(inputs - np.max(inputs, axis=axis_term, keepdims=True))
         self.output = exp_term/np.sum(exp_term, axis=axis_term, keepdims=True) 
 
