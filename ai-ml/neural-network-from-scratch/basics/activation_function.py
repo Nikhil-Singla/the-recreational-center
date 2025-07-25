@@ -62,8 +62,10 @@ class ActivationFunction:
 
         # Using shifted inputs, because in the summation and division, the result is unchanged. Caps the positive exponentiation that may blow up to infinity.
         exp_term = np.exp(inputs - np.max(inputs))
+        
+        axis_term = 1 if exp_term.ndim > 1 else 0
+        self.output = exp_term/np.sum(exp_term, axis=axis_term, keepdims=True) 
 
-        self.output = exp_term/np.sum(exp_term) 
         # Translates to e^x / sum of all e^x transformations of the input. 
 
     def get_output(self):
