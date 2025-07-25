@@ -5,13 +5,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class ActivationFunction:
-    def test_function(self, activationFunction="ReLU", given_inputs=None):
+    def test_function(self, given_inputs=None, activationFunction="ReLU"):
+        """Takes in the inputs, along with specific activation function if necessary, and then returns 
+        both the input and the output in the form of a tuple of values."""
         # Can take custom input, not necessary though.
 
         if given_inputs is None:
-            self.inputs = np.arange(-100, 100, 0.1)
+            self.inputs = np.arange(-100, 100, 1)
         else:
-            self.inputs = given_inputs
+            self.inputs = np.array(given_inputs)
 
         self.output = None
 
@@ -41,8 +43,8 @@ class ActivationFunction:
         self.output = np.tanh(inputs)
         # Tanh function call for activation function
 
-    def leakyReLU_forward(self, inputs):
-        self.output = np.maximum(np.dot(inputs, 0.1), inputs)
+    def leakyReLU_forward(self, inputs, alpha=0.1):
+        self.output = np.where(inputs > 0, inputs, alpha * inputs)
         # Dot multiplication of the inputs with 0.1 for negative values, or just the straight positive value as we take the maximum.
 
     def sigmoid_forward(self, inputs):
@@ -66,29 +68,32 @@ class ActivationFunction:
         # Gets the output 
         return self.output
     
-fig, ax = plt.subplots(2, 3)
-plt.axis([-110, 110, -0.1, 0.15]) # TODO: NEEDS FIXING TO ALL SUBPLOTS, NOT JUST THE LAST ONE.
 
-function_plotting = ActivationFunction()
-fig.suptitle("Graphs of Activation Functions")
+if __name__ == "__main__":
 
-list_of_activation_functions = [ "ReLU", "tanh", "leakyReLU", "sigmoid", "elu", "softmax"]
-subplot_coordinates = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2]]
-colors_list = ["red", "blue", "green", "cyan", "magenta", "black"]
+    fig, ax = plt.subplots(2, 3)
+    plt.axis([-110, 110, -0.1, 0.15]) # TODO: NEEDS FIXING TO ALL SUBPLOTS, NOT JUST THE LAST ONE.
 
-for function_name, subplots_location, colors in zip(list_of_activation_functions, subplot_coordinates, colors_list):
-    x_coor, y_coor = function_plotting.test_function(activationFunction=function_name)
-    i, j = subplots_location
-    ax[i, j].plot(x_coor, y_coor, color=colors)
-    ax[i, j].set_title(function_name, color=colors)
-    ax[i, j].set(xlabel='Inputs', ylabel='Outputs')
+    function_plotting = ActivationFunction()
+    fig.suptitle("Graphs of Activation Functions")
 
-fig.set_size_inches(16,18)
-plt.savefig("ai-ml/neural-network-from-scratch/basics/activation_functions.png") 
+    list_of_activation_functions = [ "ReLU", "tanh", "leakyReLU", "sigmoid", "elu", "softmax"]
+    subplot_coordinates = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2]]
+    colors_list = ["red", "blue", "green", "cyan", "magenta", "black"]
 
-# TODO:Draw lines to split quadrants
-mng = plt.get_current_fig_manager()
-mng.resize(*mng.window.maxsize())
+    for function_name, subplots_location, colors in zip(list_of_activation_functions, subplot_coordinates, colors_list):
+        x_coor, y_coor = function_plotting.test_function(activationFunction=function_name)
+        i, j = subplots_location
+        ax[i, j].plot(x_coor, y_coor, color=colors)
+        ax[i, j].set_title(function_name, color=colors)
+        ax[i, j].set(xlabel='Inputs', ylabel='Outputs')
 
-fig.tight_layout()
-plt.show()
+    # fig.set_size_inches(16,18)  # Good for image saving, not for plt.show()
+    # plt.savefig("ai-ml/neural-network-from-scratch/basics/activation_functions.png") 
+
+    # TODO:Draw lines to split quadrants
+    mng = plt.get_current_fig_manager()
+    mng.resize(*mng.window.maxsize())
+
+    fig.tight_layout()
+    plt.show()
