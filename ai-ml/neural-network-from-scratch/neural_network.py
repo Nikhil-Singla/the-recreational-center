@@ -40,10 +40,13 @@ layer_2 = Layer_Dense(HIDDEN_NEURONS, OUTPUT_NEURONS)
 
 # Forward pass
 layer_1.forward(X)
-activation_layer.softmax_forward(layer_1.output)
+activation_layer.ReLU_forward(layer_1.output)
+
+layer_2.forward(activation_layer.get_output())
+activation_layer.softmax_forward(layer_2.output)
+
+output = activation_layer.get_output()
 
 # ---------------- Output ----------------
-print("Layer 1 Output")
-print(layer_1.output[99])
-print("Applying Activation ReLU")
-print(activation_layer.get_output()[99])
+print("Final Output")
+print(output)
