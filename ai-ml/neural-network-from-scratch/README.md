@@ -7,10 +7,10 @@ This repository uses the following tags to indicate file status, testing, docume
 ### Completion Tags
 | Tag       | Meaning                                    |
 |-----------|-------------------------------------------|
-| ![I-XXX](https://img.shields.io/badge/I--XXX-Incomplete-red)     | Incomplete, XXX% remaining                       |
-| ![I-BUG](https://img.shields.io/badge/I--BUG-Incomplete-orange)        | Incomplete, has bugs                              |
-| ![C-COM](https://img.shields.io/badge/C--COM-Completed-yellow)      | Completed, might need comments                   |
-| ![COMPL](https://img.shields.io/badge/COMPL-Completed-brightgreen)  | Completed file, Compiles                          |
+| ![I-XXX](https://img.shields.io/badge/I--XXX-Incomplete-red)     | Incomplete, XXX% remaining                 |
+| ![I-BUG](https://img.shields.io/badge/I--BUG-Incomplete-orange)        | Incomplete, has bugs                 |
+| ![C-COM](https://img.shields.io/badge/C--COM-Completed-yellow)      | Completed, might need comments          |
+| ![COMPL](https://img.shields.io/badge/COMPL-Completed-brightgreen)  | Completed file, Compiles as imagined    |
 
 ### Verification / Quality Tags
 | Tag     | Meaning                                    |
@@ -24,7 +24,7 @@ This repository uses the following tags to indicate file status, testing, docume
 | Tag       | Meaning                                     |
 |-----------|--------------------------------------------|
 | ![DOC](https://img.shields.io/badge/DOC-Documentation-lightblue)      | Documentation file (README, guides, etc.) |
-| ![EXAMPLE](https://img.shields.io/badge/EXAMPLE-Example-yellow)      | Example or demo file                      |
+| ![EXAMPLE](https://img.shields.io/badge/EXAMPLE-Example-yellow)      | Example or demo file for testing          |
 | ![IGNORE](https://img.shields.io/badge/IGNORE-Ignored-lightgrey)     | Files not tracked or irrelevant          |
 | ![ASSET](https://img.shields.io/badge/ASSET-Asset-orange)            | Asset file (images, data, etc.)          |
 | ![CFG](https://img.shields.io/badge/CFG-Config-lightgrey)            | Configuration or setup file               |
