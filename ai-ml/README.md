@@ -1,42 +1,50 @@
-## Status & Tag Mappings
+# ✅ Project Tagging System
 
-This repository uses the following tags to indicate file status, testing, documentation, and complexity.
+This repository uses a simple and consistent **tagging system** to indicate the status, quality, and type of files. 
 
 ---
 
-### Completion Tags
-| Tag       | Meaning                                    |
-|-----------|-------------------------------------------|
-| ![I-XXX](https://img.shields.io/badge/I--XXX-Incomplete-red)     | Incomplete, XXX% remaining                 |
-| ![I-BUG](https://img.shields.io/badge/I--BUG-Incomplete-orange)        | Incomplete, has bugs                 |
-| ![C-COM](https://img.shields.io/badge/C--COM-Completed-yellow)      | Completed, might need comments          |
-| ![COMPL](https://img.shields.io/badge/COMPL-Completed-brightgreen)  | Completed file, Compiles as imagined    |
+## 🏗 Completion Tags
 
-### Verification / Quality Tags
-| Tag     | Meaning                                    |
-|---------|-------------------------------------------|
-| ![E](https://img.shields.io/badge/E-Experimental-lightgrey)       | Experimental (not fully verified)          |
-| ![O](https://img.shields.io/badge/O-Optimized-lightblue)          | Optimized (improved speed/memory)          |
-| ![R](https://img.shields.io/badge/R-Refactor-blue)                | Refactor needed (works, but can improve)   |
-| ![V](https://img.shields.io/badge/V-Verified-green)               | Verified (tested and works as intended)    |
+| Tag  | Badge                                         | Meaning                  | Description                  |
+|-------|--------------------------------------------------------------------------------------|-------------------------------------------|-----------------------------------------------|
+| 'TODO'| ![TODO](https://img.shields.io/badge/TODO-Incomplete-red)              | Incomplete                | File or feature not started or barely started|
+| 'WIP' | ![WIP](https://img.shields.io/badge/WIP-Work_in_progress-orange)          | Work in progress             | Actively being worked on (add %: 'WIP 60')  |
+| 'BUG' | ![BUG](https://img.shields.io/badge/BUG-Has_bugs-red)                | Bug present                | Code exists but contains known issues     |
+| 'RVW' | ![RVW](https://img.shields.io/badge/RVW-Needs_review-yellow)             | Needs review               | Completed but pending review or comments   |
+| 'DONE'| ![DONE](https://img.shields.io/badge/DONE-Completed-brightgreen)           | Completed                 | Fully implemented and compiles as expected  |
 
-### Basic / Miscellaneous File Tags
-| Tag       | Meaning                                     |
-|-----------|--------------------------------------------|
-| ![DOC](https://img.shields.io/badge/DOC-Documentation-lightblue)      | Documentation file (README, guides, etc.) |
-| ![EXAMPLE](https://img.shields.io/badge/EXAMPLE-Example-yellow)      | Example or demo file for testing          |
-| ![IGNORE](https://img.shields.io/badge/IGNORE-Ignored-lightgrey)     | Files not tracked or irrelevant          |
-| ![ASSET](https://img.shields.io/badge/ASSET-Asset-orange)            | Asset file (images, data, etc.)          |
-| ![CFG](https://img.shields.io/badge/CFG-Config-lightgrey)            | Configuration or setup file               |
+---
 
-<!--  
+## ✅ Verification / Quality Tags
 
-### Testing Tags
-| Tag     | Meaning                      |
-|---------|-----------------------------|
-| ![T-P](https://img.shields.io/badge/T--P-Partial-yellow)   | Partial test coverage       |
-| ![T-N](https://img.shields.io/badge/T--N-None-lightgrey)   | No tests written            |
-| ![T-F](https://img.shields.io/badge/T--F-Full-brightgreen) | Full test coverage          |
--->
+| Tag  | Badge                                         | Meaning                   | Description                     |
+|--------|--------------------------------------------------------------------------------------|---------------------------------------------|-----------------------------------------------------|
+| 'EXPR' | ![EXPR](https://img.shields.io/badge/EXPR-Experimental-lightgrey)          | Experimental                 | Not fully tested; results may vary         |
+| 'OPTM' | ![OPTM](https://img.shields.io/badge/OPTM-Optimized-lightblue)           | Optimized                  | Performance improvements made (speed, memory)    |
+| 'RFAC' | ![RFAC](https://img.shields.io/badge/RFAC-Refactor_needed-blue)           | Refactor needed                | Works, but structure can be improved        |
+| 'VERF' | ![VERF](https://img.shields.io/badge/VERF-Verified-green)              | Verified                   | Tested and confirmed to work as intended      |
+
+---
+
+## 📂 File Type Tags
+
+| Tag  | Badge                                         | Meaning                  | Description                     |
+|--------|--------------------------------------------------------------------------------------|-------------------------------------------|-----------------------------------------------------|
+| 'DOCS' | ![DOCS](https://img.shields.io/badge/DOCS-Documentation-blue)            | Documentation               | Guides, README, or help files           |
+| 'EXMP' | ![EXMP](https://img.shields.io/badge/EXMP-Example-yellow)              | Example                  | Demo or reference implementation          |
+| 'IGNR' | ![IGNR](https://img.shields.io/badge/IGNR-Ignored-lightgrey)             | Ignored                  | Files not tracked or irrelevant for build      |
+| 'ASST' | ![ASST](https://img.shields.io/badge/ASST-Asset-orange)                | Asset                   | Images, data files, or other resources       |
+| 'CONF' | ![CONF](https://img.shields.io/badge/CONF-Config-grey)                 | Configuration               | Setup or environment configuration files      |
+
+---
+
+## 🧪 Testing Tags (Optional)
+
+| Tag  | Badge                                         | Meaning                  | Description                     |
+|--------|--------------------------------------------------------------------------------------|-------------------------------------------|-----------------------------------------------------|
+| 'TPAR' | ![TPAR](https://img.shields.io/badge/TPAR-Partial-yellow)              | Partial tests               | Some test coverage exists, but incomplete      |
+| 'TNON' | ![TNON](https://img.shields.io/badge/TNON-None-lightgrey)               | No tests                  | No test cases written                |
+| 'TFUL' | ![TFUL](https://img.shields.io/badge/TFUL-Full-brightgreen)              | Full coverage                | Comprehensive test coverage achieved        |
 
 ---
