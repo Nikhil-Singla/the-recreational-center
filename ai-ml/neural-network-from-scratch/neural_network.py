@@ -4,9 +4,9 @@
 import random
 import numpy as np
 
+from basics.loss_function import CategoricalCrossEntropy_Loss
 from basics.activation_function import ActivationFunction
 from basics.spiral_data import create_data
-from basics.loss_function import CategoricalCrossEntropy_Loss
 
 # Set seed for reproducibility
 random.seed(1)
@@ -28,21 +28,10 @@ class Layer_Dense:
 # ---------------- Configuration ----------------
 X, y = create_data(100, 3, 2)
 
-# DEBUGGING CODE BELOW
-# X = np.array([[0,0],
-#                   [0,1],
-#                   [1,0],
-#                   [1,1]])
-# y = np.array([0,0,0,1])   # AND labels
+HIDDEN_NEURONS = 10
 
-INPUT_NEURONS = X.shape[1]  # Number of input features per single sample. Assuming 0th shape is the number of total samples, as we are working in a batch
-
-HIDDEN_NEURONS = 10         # Neurons in the first (hidden) layer. Gives the complexity of the AI model.
-
-OUTPUT_NEURONS = max(y)+1   # Neuron size in the output layer, dependant on how many categories. 
-                            # For its calculation, we are assuming each category shows up AT LEAST ONCE in the given y, starting from 0
-
-# print(INPUT_NEURONS, OUTPUT_NEURONS) DBG
+OUTPUT_NEURONS = max(y)+1
+INPUT_NEURONS = X.shape[1]
 
 # ---------------- Network Flow ----------------
 # Initialize layers
@@ -68,12 +57,7 @@ accuracy = np.mean(predicted_outputs == y)
 
 # ---------------- Output ----------------
 
-# print("Final Output")
-# print(output, y) DBG
-# print(output)    DBG
-
 print("Loss")
-# print(loss, negative) DBG
 print(loss)
 
 print("Accuracy")
