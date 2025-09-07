@@ -22,7 +22,7 @@ This repository uses a simple and consistent **tagging system** to indicate the 
 |--------|--------------------------------------------------------------------------------------|---------------------------------------------|-----------------------------------------------------|
 | 'EXPR' | ![EXPR](https://img.shields.io/badge/EXPR-Experimental-lightgrey)          | Experimental                 | Not fully tested; results may vary         |
 | 'OPTM' | ![OPTM](https://img.shields.io/badge/OPTM-Optimized-lightblue)           | Optimized                  | Performance improvements made (speed, memory)    |
-| 'RFAC' | ![RFAC](https://img.shields.io/badge/RFAC-Refactor_needed-blue)           | Refactor needed                | Works, but structure can be improved        |
+| 'RFAC' | ![RFAC](https://img.shields.io/badge/RFAC-Refactor_needed-blue)           | Refactor needed                | Code refactored to improve structure      |
 | 'VERF' | ![VERF](https://img.shields.io/badge/VERF-Verified-green)              | Verified                   | Tested and confirmed to work as intended      |
 
 ---
