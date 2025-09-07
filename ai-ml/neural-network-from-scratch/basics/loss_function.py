@@ -9,7 +9,7 @@ class LossFunction:
         sample_losses = self.forward(output, y)
         average_data_loss = np.mean(sample_losses)
         
-        return average_data_loss
+        return average_data_loss, sample_losses
     
 class CategoricalCrossEntropy_Loss(LossFunction):
     def forward(self, y_predicted, y_true):
@@ -17,7 +17,7 @@ class CategoricalCrossEntropy_Loss(LossFunction):
         # Predicted values is an n x m array, where n is the samples, and m is the categories. 
         # pred[n][m] is the confidence predicted for the mth category in the nth sample
         # True values is either a one hot encoded or scalar array. 
-        # Case 1 is n x m array, and Case 2 is an array of length n.
+        # Case 1 is an array of length n, and Case 2 is a n x m array.
 
 
         # Get total number of samples inputted.
@@ -48,5 +48,4 @@ class CategoricalCrossEntropy_Loss(LossFunction):
         # Scalar Values = [0, 1]. Implies we are given the category that is correct.
         
         negative_log_likelihoods = -np.log(correct_predictions)
-
         return negative_log_likelihoods
