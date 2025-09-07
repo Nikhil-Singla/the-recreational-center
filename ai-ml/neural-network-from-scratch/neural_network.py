@@ -3,8 +3,10 @@
 
 import random
 import numpy as np
+
 from basics.activation_function import ActivationFunction
 from basics.spiral_data import create_data
+from basics.loss_function import CategoricalCrossEntropy_Loss
 
 # Set seed for reproducibility
 random.seed(1)
@@ -24,18 +26,29 @@ class Layer_Dense:
         self.output = np.dot(inputs, self.weights) + self.biases
 
 # ---------------- Configuration ----------------
-INPUT_NEURONS = 2           # Number of inputs per sample
-HIDDEN_NEURONS = 10         # Neurons in the first (hidden) layer
-OUTPUT_NEURONS = 3          # Single neuron in the output layer
-BATCH_SIZE = 2              # Number of samples in a batch
-ROUNDING_PRECISION = 2      # Decimal places for rounding input values
+X, y = create_data(100, 3, 2)
 
-X, y = create_data()
+# DEBUGGING CODE BELOW
+# X = np.array([[0,0],
+#                   [0,1],
+#                   [1,0],
+#                   [1,1]])
+# y = np.array([0,0,0,1])   # AND labels
+
+INPUT_NEURONS = X.shape[1]  # Number of input features per single sample. Assuming 0th shape is the number of total samples, as we are working in a batch
+
+HIDDEN_NEURONS = 10         # Neurons in the first (hidden) layer. Gives the complexity of the AI model.
+
+OUTPUT_NEURONS = max(y)+1   # Neuron size in the output layer, dependant on how many categories. 
+                            # For its calculation, we are assuming each category shows up AT LEAST ONCE in the given y, starting from 0
+
+# print(INPUT_NEURONS, OUTPUT_NEURONS) DBG
 
 # ---------------- Network Flow ----------------
 # Initialize layers
 layer_1 = Layer_Dense(INPUT_NEURONS, HIDDEN_NEURONS)
 activation_layer = ActivationFunction()
+
 layer_2 = Layer_Dense(HIDDEN_NEURONS, OUTPUT_NEURONS)
 
 # Forward pass
@@ -47,6 +60,21 @@ activation_layer.softmax_forward(layer_2.output)
 
 output = activation_layer.get_output()
 
+loss_function = CategoricalCrossEntropy_Loss()
+loss, _ = loss_function.calculate_loss(output, y)
+
+predicted_outputs = np.argmax(output, axis=1)
+accuracy = np.mean(predicted_outputs == y)
+
 # ---------------- Output ----------------
-print("Final Output")
-print(output)
+
+# print("Final Output")
+# print(output, y) DBG
+# print(output)    DBG
+
+print("Loss")
+# print(loss, negative) DBG
+print(loss)
+
+print("Accuracy")
+print(accuracy)
