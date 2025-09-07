@@ -29,20 +29,24 @@ class CategoricalCrossEntropy_Loss(LossFunction):
         # This doesn't solve overconfident predictions, but helps better detect 0 errors.
         y_predicted[y_predicted == 0] = 1e-16
 
-        # One hot encoded = [[0, 1], [1, 0]]. Implies we are given all the categories and their confidence.
-        # Scalar Values = [0, 1]. Implies we are given the category that is correct.
-        np.mean(-np.log(range(number_of_elements), y_true))
-
+        # Scalar values
         if len(y_true.shape) == 1:
             # If we have scalar predictions
             # For each element, we take the ith element where i E y_true.
             # This means that range goes through each of the n terms, and y_true is the correct category.             
             correct_predictions = y_predicted[range(number_of_elements), y_true]
         
+        # One hot encoded values
         if len(y_true.shape) == 2:
             # Here, we instead multiply the two matrices and their relative terms.
             # After this, we add all the terms together. In either case, since we assume 
             # that the other categories are 0, we are only left with the correct predictions. 
             correct_predictions = np.sum(y_predicted*y_true, axis=1)
 
+
+        # One hot encoded = [[0, 1], [1, 0]]. Implies we are given all the categories and their confidence.
+        # Scalar Values = [0, 1]. Implies we are given the category that is correct.
         
+        negative_log_likelihoods = -np.log(correct_predictions)
+
+        return negative_log_likelihoods
