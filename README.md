@@ -11,10 +11,11 @@ Welcome to **The Rec Center** – my personal recreation hub where I rebuild dat
 
 ## ✨ Highlights (TL;DR version)
 
-- ✅ Recreated key **data structures** (linked lists, graphs, heaps, tries)
+- ✅ Recreated key **data structures** (linked lists, stacks)
+- ⚙️ Implemented basic **neural network functions** from scratch (forward pass, loss calculation, activation function)
+- 🎵 Built a **Pong** clone with multiplayer gameplay, score tracking system and dynamic difficulty.
+
 <!--
-- 🎵 Built a **Spotify-like music player** clone with playback, search & auth
-- ⚙️ Implemented classic **algorithms** (sorting, pathfinding, DP, search trees)
 - 🔗 Hands-on with **low-level system design** and **API architecture**
 - 📈 Tracking project progress with visual boards and clean commits
 
