@@ -1,0 +1,17 @@
+Canvas can draw freeform graphic.
+
+Have fallback content, and pages can have multiple canvases.
+
+Canvases can have levels of transparency. And unlike other media types, its contents are not part of the page dom
+
+SVG is mroe suitable for mixing graphics with the DOM.
+
+Canvas coordinates start at the top left with vlaues increasing towards the right and down axes.
+
+Use tag canvas, with id tag and widt, height, 
+Fallbackn content in the tag,
+
+toDataURL => Static image of the data URL, type parameter indicates the type of url
+
+getContext => Retrieves the drawing context for the canvas.
+
